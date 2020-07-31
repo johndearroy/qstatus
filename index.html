@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+</head>
+<body>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        var folder = "images/";
+
+        $.ajax({
+            url : folder,
+            crossOrigin: null,
+            crossDomain: true,
+            headers: {  'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Origin': '*' },
+            success: function (data) {
+                $(data).find("a").attr("href", function (i, val) {
+                    if( val.match(/\.(jpe?g|png|gif)$/) ) { 
+                        $("body").append( "<img src='"+ folder + val +"'>" );
+                    } 
+                });
+            }
+        });
+    </script>
+</body>
+</html>
